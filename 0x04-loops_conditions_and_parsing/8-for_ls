@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# printing all the files itn the current diretory
+for i in *
+do
+	if [[ ! $i =~ ^\. ]] && [[ $i == *-* ]]
+	then
+		name_after_dash="${i#*-}"
+		echo "$name_after_dash"
+	fi
+done
