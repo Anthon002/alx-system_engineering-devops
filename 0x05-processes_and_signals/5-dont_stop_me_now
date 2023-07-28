@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# to termintate the to_infinity_and_beyond process
+_file="$(pgrep -f 4-to_infinity_and_beyond)"
+kill "$_file"
