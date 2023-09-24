@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# This script will connect to a remote liux server using private key in /.ssh/school
+
+ssh -i ~/.ssh/school ubuntu@52.91.152.159
