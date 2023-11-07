@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """this script will  query subscribers from a  subreddit."""
-import req as req 
+import requests as req 
 
 def number_of_subscribers(subreddit):
     """This will return  total no. of subs from a given subreddit."""
