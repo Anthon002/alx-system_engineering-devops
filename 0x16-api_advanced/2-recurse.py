@@ -1,28 +1,28 @@
 #!/usr/bin/python3
-""" this script will query a list of all top posts from a subreddit."""
-import requests as reqs
+"""Function to query a list of all hot posts on a given Reddit subreddit."""
+import requests
 
 
 def recurse(subreddit, hot_list=[], after="", count=0):
-    """this method will returns a list of titles of all top posts from a subreddit."""
+    """Returns a list of titles of all hot posts on a given subreddit."""
     url = "https://www.reddit.com/r/{}/hot/.json".format(subreddit)
     headers = {
         "User-Agent": "linux:0x16.api.advanced:v1.0.0 (by /u/bdov_)"
     }
-    parameters = {
+    params = {
         "after": after,
         "count": count,
         "limit": 100
     }
-    response = reqs.get(url, headers=headers, parameters=parameters,
+    response = requests.get(url, headers=headers, params=params,
                             allow_redirects=False)
     if response.status_code == 404:
         return None
 
-    _result = response.json().get("data")
-    after = _result.get("after")
-    count += _result.get("dist")
-    for c in _result.get("children"):
+    results = response.json().get("data")
+    after = results.get("after")
+    count += results.get("dist")
+    for c in results.get("children"):
         hot_list.append(c.get("data").get("title"))
 
     if after is not None:
